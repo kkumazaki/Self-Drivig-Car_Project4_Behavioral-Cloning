@@ -205,7 +205,8 @@ plt.title('model mean squared error loss')
 plt.ylabel('mean squared error loss')
 plt.xlabel('epoch')
 plt.legend(['training set', 'validation set'], loc='upper right')
-plt.show()
+#plt.show()
+plt.savefig("result.png")
 
 print("Show the graph.")
 

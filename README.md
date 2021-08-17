@@ -2,34 +2,66 @@
 
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
-Overview
+1.Overview
 ---
 This repository contains starting files for the Behavioral Cloning Project.
 
-In this project, you will use what you've learned about deep neural networks and convolutional neural networks to clone driving behavior. You will train, validate and test a model using Keras. The model will output a steering angle to an autonomous vehicle.
+In this project, I used what I've learned about deep neural networks and convolutional neural networks to clone driving behavior. I trained, validated and tested a model using Keras. The model outputs a steering angle to an autonomous vehicle.
 
-We have provided a simulator where you can steer a car around a track for data collection. You'll use image data and steering angles to train a neural network and then use this model to drive the car autonomously around the track.
+I used a simulator where I can steer a car around a track for data collection. I used image data and steering angles to train a neural network and then used this model to drive the car autonomously around the track.
 
-We also want you to create a detailed writeup of the project. Check out the [writeup template](https://github.com/udacity/CarND-Behavioral-Cloning-P3/blob/master/writeup_template.md) for this project and use it as a starting point for creating your own writeup. The writeup can be either a markdown file or a pdf document.
+I created a detailed writeup of the project. Please check it for the details.       
+[Writeup_of_Lesson17.pdf](https://github.com/kkumazaki/Self-Drivig-Car_Project4_Behavioral-Cloning/blob/master/Writeup_of_Lesson17.pdf) 
 
-To meet specifications, the project will require submitting five files: 
-* model.py (script used to create and train the model)
-* drive.py (script to drive the car - feel free to modify this file)
-* model.h5 (a trained Keras model)
-* a report writeup file (either markdown or pdf)
-* video.mp4 (a video recording of your vehicle driving autonomously around the track for at least one full lap)
+I submitted the following five files which are required: 
+* [model.py](https://github.com/kkumazaki/Self-Drivig-Car_Project4_Behavioral-Cloning/blob/master/model.py)  (script used to create and train the model) 
+* [drive.py](https://github.com/kkumazaki/Self-Drivig-Car_Project4_Behavioral-Cloning/blob/master/drive.py)  (script to drive the car - feel free to modify this file)
+* [model.h5](https://github.com/kkumazaki/Self-Drivig-Car_Project4_Behavioral-Cloning/blob/master/model.h5) (a trained Keras model)
+* [a report writeup file](https://github.com/kkumazaki/Self-Drivig-Car_Project4_Behavioral-Cloning/blob/master/Writeup_of_Lesson17.pdf) (pdf)
+* [video.mp4](https://github.com/kkumazaki/Self-Drivig-Car_Project4_Behavioral-Cloning/blob/master/video.mp4) (a video recording of your vehicle driving autonomously around the track for at least one full lap)
 
-This README file describes how to output the video in the "Details About Files In This Directory" section.
-
-Creating a Great Writeup
+2.The Rublic
 ---
-A great writeup should include the [rubric points](https://review.udacity.com/#!/rubrics/432/view) as well as your description of how you addressed each point.  You should include a detailed description of the code used (with line-number references and code snippets where necessary), and links to other supporting documents or external references.  You should include images in your writeup to demonstrate how your code works with examples.  
+ [Link of rubric points](https://review.udacity.com/#!/rubrics/432/view) 
 
-All that said, please be concise!  We're not looking for you to write a book here, just a brief description of how you passed each rubric point, and references to the relevant code :). 
+### (1)Required Files  
+The submission includes a model.py file, drive.py, model.h5 a writeup report and video.mp4.  
+--> They are all submitted as written above.  
 
-You're not required to use markdown for your writeup.  If you use another method please just submit a pdf of your writeup.
+### (2)Quality of Code  
+* The model provided can be used to successfully operate the simulation.  
+ --> It successfully operated the simulation in Udaciry Workspace.
+* The code in model.py uses a Python generator, if needed, to generate data for training rather than storing the training data in memory. The model.py code is clearly organized and comments are included where needed.  
+ --> I used generator. I wrote comments to make the code readable.
 
-The Project
+### (3)Model Architecture and Training Strategy
+* The neural network uses convolution layers with appropriate filter sizes. Layers exist to introduce nonlinearity into the model. The data is normalized in the model.  
+  --> I added 5 convolution layers. I used RELU as activation function to introduce nonlinearlity. I added normalized layer by using Lambda function.
+* Train/validation/test splits have been used, and the model uses dropout layers or other methods to reduce overfitting.  
+  --> I splitted Train/validation/test data. I added dropout layer between the convolutional layer and flattend layer.  
+* Learning rate parameters are chosen with explanation, or an Adam optimizer is used.  
+  --> I used Adam optimizer.
+* Training data has been chosen to induce the desired behavior in the simulation (i.e. keeping the car on the track).  
+  --> I chose the following Training dataset.  
+  * Keeping the car on the track.
+  * Drive the curve smoothly.
+  * Recovery laps to avoid lane deviation.
+
+### (4)Architecture and Training Documentation
+* The README thoroughly discusses the approach taken for deriving and designing a model architecture fit for solving the given problem.  
+  --> I discussed it in [Writeup_of_Lesson17.pdf](https://github.com/kkumazaki/Self-Drivig-Car_Project4_Behavioral-Cloning/blob/master/Writeup_of_Lesson17.pdf) .
+* The README provides sufficient details of the characteristics and qualities of the architecture, such as the type of model used, the number of layers, the size of each layer. Visualizations emphasizing particular qualities of the architecture are encouraged. Here is one such tool for visualization.  
+  --> I provided it in [Writeup_of_Lesson17.pdf](https://github.com/kkumazaki/Self-Drivig-Car_Project4_Behavioral-Cloning/blob/master/Writeup_of_Lesson17.pdf) .
+* The README describes how the model was trained and what the characteristics of the dataset are. Information such as how the dataset was generated and examples of images from the dataset must be included.  
+  --> I described it in [Writeup_of_Lesson17.pdf](https://github.com/kkumazaki/Self-Drivig-Car_Project4_Behavioral-Cloning/blob/master/Writeup_of_Lesson17.pdf) .
+
+
+### (5)Simulation
+* No tire may leave the drivable portion of the track surface. The car may not pop up onto ledges or roll over any surfaces that would otherwise be considered unsafe (if humans were in the vehicle).  
+  --> The vehicle drove well in the track 1. [video.mp4](https://github.com/kkumazaki/Self-Drivig-Car_Project4_Behavioral-Cloning/blob/master/video.mp4)
+
+
+3.The Project
 ---
 The goals / steps of this project are the following:
 * Use the simulator to collect data of good driving behavior 
@@ -119,7 +151,3 @@ Will run the video at 48 FPS. The default FPS is 60.
 
 ### Tips
 - Please keep in mind that training images are loaded in BGR colorspace using cv2 while drive.py load images in RGB to predict the steering angles.
-
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
-
